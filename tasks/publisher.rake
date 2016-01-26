@@ -44,7 +44,7 @@ task :publisher => "db:connect" do
             direct.publish(body, headers: headers, routing_key: "state.#{user.state.id}")
           when :user
             print "U"
-            direct.publish(body, headers: headers, routing_key: "user.#{user_ids.sample}")
+            direct.publish(body, headers: headers, routing_key: "user.#{user_ids.reject {|id| id == user.id}.sample}")
           else
             fanout.publish(body, headers: headers)
           end
