@@ -23,7 +23,7 @@ namespace :db do
 
   desc "create dummy records on db"
   task :seed => :connect do
-    (ENV["COMPANIE_COUNT"] || 10).times {Company.create}
+    (ENV["COMPANY_COUNT"] || 10).times {Company.create}
     (ENV["STATE_COUNT"] || 10).times {State.create}
     (ENV["USER_COUNT"] || 100).times {User.create}
   end
